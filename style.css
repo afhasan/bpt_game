@@ -1,0 +1,54 @@
+body{
+    background: black;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+
+  label{
+    font-size: 150%;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  
+  
+  .description{
+    text-align: center;
+    font-size: 200%;
+    
+  }
+  
+  .input-container{
+
+
+    display: flex;
+    align-self: center;
+    align-items: center;
+    width: 912px;
+    height: 192px;
+    
+  
+    background: black;
+    align-content: center;
+    padding: 10px;
+    padding-top: 40px;
+    border-radius: 20px;
+    flex-direction: column;
+    color: #71FF5A;
+    border: 5px solid #71FF5A;
+
+    margin-left: auto;
+    margin-right: auto
+  }
+
+  #bpt{
+    color: #6D0680
+  }
+
+  #description{
+    color: #DC0757
+  }
+
+  .button-container{
+    display: flex;
+    justify-content: center;
+  }
