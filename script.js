@@ -25,9 +25,6 @@ window.onload = function () {
 
     // create a consts for the inputs in order to sign in
     
-    
-
-    
   
     const loginbtn = document.getElementById("login");
     console.log("loginbtn created, id: " + loginbtn.id);
@@ -71,7 +68,7 @@ window.onload = function () {
   
   }
 
-
+//For signing up, follows same process as logging in but instead use auth.createUserWithEmailAndPassword(email, password)
   const submitbtn = document.getElementById("signUpSubmit");
   console.log("submitbtn created, id: " + submitbtn.id);
   if (submitbtn) {

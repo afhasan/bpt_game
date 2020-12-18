@@ -1,42 +1,50 @@
+//add images
 public PImage landscape;
 public PImage drone; 
 public PImage covidImg;
 public PImage bulletImg;
 
+//sets keys for movement, creates list for COVID/Bullets, sets number of points, health, and amount of times COVID has been hit
 private boolean a, w, d, s;
-public int gameOver = 0;
 public int points = 0;
 public int life = 5;
 public int counter = 6;
 ArrayList<COVID> covid = new ArrayList<COVID>();
 ArrayList <Bullet> bullets = new ArrayList <Bullet> ();
 
+//setup of game board
 public void setup() 
 {
-  
-  size(1450, 800);
+  //sets size of game to be 1500px x 800px
+  size(1500, 800);
+  //loads images
   landscape = loadImage("landscape.png");
   drone = loadImage("drone.png");
   covidImg = loadImage("COVID.png");
   bulletImg = loadImage("bullet.png");
   
+  //creates 40 covid particles
   for(int i = 0; i < 40; i++){
     covid.add(new COVID(covidImg));
   }
   
+
 }
 
+//creates a spaceship
 Spaceship ship = new Spaceship(drone);
 
+//draws the game, how the game works
 public void draw() 
 {
  
+ //inserts background image
  background(0);
  landscape.resize(width, height);
  image(landscape, 0, 0);
- //image(drone, 0, 0);
+
   
-  
+  //health bar 
   if(life == 5){
   noStroke();
   fill(255, 0, 0);
@@ -63,6 +71,8 @@ public void draw()
    fill(0);
    rect(0, 0, 0, 0);
   }
+
+ //movement of ship
   if(!w && !s){
    ship.setDirectionX(ship.getDirectionX() * .95); 
    ship.setDirectionY(ship.getDirectionY() * .95);
@@ -82,26 +92,29 @@ public void draw()
   ship.move();
   ship.show();
 
+//creation/movement of bullets
   for(int h = 0; h < bullets.size(); h++){
     bullets.get(h).show();
     bullets.get(h).move();
    }
-    
+
+//creations/movement of covid  
   for(int i = 0; i < covid.size(); i++){
     covid.get(i).show();
     covid.get(i).move();
     
+    //collision detector, if ship gets close enough to covid, remove that particle, add 2 more, health goes down by one
     float distance = dist(ship.getX(), ship.getY(), covid.get(i).getX(), covid.get(i).getY());
     if(distance <= 40){
       covid.remove(i);
       covid.add(new COVID(covidImg));
       covid.add(new COVID(covidImg));
-      gameOver++;
       life--;
     }
       
   }
 
+//if bullet hits covid particle, counter subtracts by one. if a covid particle is hit 6 times, remove that particle and health bar goes up by one
  for (int t = 0; t < covid.size(); t ++)
 {
   for(int p = 0; p < bullets.size(); p++)
@@ -124,6 +137,7 @@ public void draw()
 }
 }
 
+//checks to see if keys are pressed or not and sets boolean values for movement of ship
 public void keyPressed(){
  
   if (key == 'w'){
@@ -139,12 +153,13 @@ public void keyPressed(){
  if (key == 'd'){
    d = true;
   }
-  
+  //if space bar is pressed, shoot bullets
   if(key == ' '){
    bullets.add(new Bullet(ship, bulletImg)); 
   }
 }
 
+//checks to see if keys are released for movement 
 public void keyReleased(){
   if (key == 'w'){
      w = false;
