@@ -14,7 +14,7 @@ ArrayList <Bullet> bullets = new ArrayList <Bullet> ();
 public void setup() 
 {
   
-  fullScreen();
+  size(1450, 800);
   landscape = loadImage("landscape.png");
   drone = loadImage("drone.png");
   covidImg = loadImage("COVID.png");
