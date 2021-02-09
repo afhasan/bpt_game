@@ -72,22 +72,23 @@ public void draw()
    rect(0, 0, 0, 0);
   }
 
+
  //movement of ship
   if(!w && !s){
    ship.setDirectionX(ship.getDirectionX() * .95); 
    ship.setDirectionY(ship.getDirectionY() * .95);
   }
   if (w){
-      ship.accelerate(0, -0.2);
+      ship.accelerate(0, -1);
   }
   if (s){
-      ship.accelerate(0, 0.2);
+      ship.accelerate(0, 1);
   }
   if (a){
-     ship.accelerate(-0.2, 0);
+     ship.accelerate(-1, 0);
   }
   if (d){
-    ship.accelerate(0.2, 0);
+    ship.accelerate(1, 0);
   }
   ship.move();
   ship.show();
@@ -97,7 +98,17 @@ public void draw()
     bullets.get(h).show();
     bullets.get(h).move();
    }
-
+/* 
+  Snippet of code for mouse location 
+  PointerInfo a = MouseInfo.getPointerInfo();
+  Point b = a.getLocation();
+  int x = (int) b.getX();
+  int y = (int) b.getY();
+  System.out.print(y + "jjjjjjjjj");
+  System.out.print(x);
+  Robot r = new Robot();
+  r.mouseMove(x, y - 50);
+*/ 
 //creations/movement of covid  
   for(int i = 0; i < covid.size(); i++){
     covid.get(i).show();
@@ -136,6 +147,10 @@ public void draw()
   }
 }
 }
+//The mouseClicked() function is called after a mouse button has been pressed and then released.
+public void mouseClicked() {
+   bullets.add(new Bullet(ship, bulletImg)); 
+}
 
 //checks to see if keys are pressed or not and sets boolean values for movement of ship
 public void keyPressed(){
@@ -154,9 +169,9 @@ public void keyPressed(){
    d = true;
   }
   //if space bar is pressed, shoot bullets
-  if(key == ' '){
-   bullets.add(new Bullet(ship, bulletImg)); 
-  }
+  // if(key == ' '){
+  //  bullets.add(new Bullet(ship, bulletImg)); 
+  // }
 }
 
 //checks to see if keys are released for movement 
