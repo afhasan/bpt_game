@@ -1,3 +1,4 @@
+
 class Bullet extends Floater{
   //Bullet contructor to set the center, point direction, speed, and direction of bullets
   public Bullet(Spaceship theShip, PImage bulletImg){
@@ -6,10 +7,15 @@ class Bullet extends Floater{
     myCenterY = theShip.getY();
     myPointDirection = theShip.getPointDirection();
     double dRadians = myPointDirection * (Math.PI/180);
-    // myDirectionX = 20 * Math.cos(dRadians) + theShip.getDirectionX();
-    // myDirectionY = 20 * Math.sin(dRadians) + theShip.getDirectionY();
-    myDirectionX = 20 * Math.cos(dRadians) + pmouseX;
-    myDirectionY = 20 * Math.sin(dRadians) + pmouseY;
+    myDirectionX = 20 * Math.cos(dRadians) + theShip.getDirectionX();
+    myDirectionY = 20 * Math.sin(dRadians) + theShip.getDirectionY(); 
+    // // myDirectionX = 20 * Math.cos(dRadians) + getAngleX() + theShip.getDirectionX();
+    // // myDirectionY = 20 * Math.sin(dRadians) + getAngleY() +theShip.getDirectionY();
+    
+    // myDirectionX = 20 * Math.cos(getAngleX() * (Math.PI/180));
+    // myDirectionY = 20 * Math.sin(getAngleY() * (Math.PI/180));
+
+
 
     
   }
@@ -34,4 +40,39 @@ class Bullet extends Floater{
   public double getDirectionY(){return myDirectionY;}  
   public void setPointDirection(int degrees){myPointDirection = degrees;}   
   public double getPointDirection(){return myPointDirection;} 
+//code from web
+  float xPosition, yPosition;
+  float xVelocity, yVelocity;
+  float directionAngle;
+  float speed;
+
+  void update() {
+    xPosition += xVelocity;
+    yPosition += yVelocity;
+  }
+
+
+  void setVelocity(float dir, float spd) {
+    directionAngle = dir;
+    speed = spd;
+    xVelocity = speed * cos(dir);
+    yVelocity = speed * sin(dir);
+  }
+  
+  float getDistance(Spaceship other) {
+    return dist(this.xPosition, this.yPosition, other.xPosition, other.yPosition);
+  }
+  float getDistancePow2(Spaceship other) {
+    return sq(other.xPosition - this.xPosition) + sq(other.yPosition - this.yPosition);
+  }
+  // float getAngle() {
+  //   return atan2(theShip.getX() - mouseX, theShip.getY() - mouseY);
+  // }
+
+   double getAngleX() {
+    return atan2(mouseX - pMouseX); 
+  }
+  double getAngleY() {
+    return atan2(mouseY - pMouseY);
+  }
 }
