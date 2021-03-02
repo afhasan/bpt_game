@@ -16,7 +16,27 @@ body{
     font-size: 200%;
     
   }
+
+  .instructionAWSD{
+    text-align: center;
+    font-size: 175%;
+    color: #DC0757;
+  }
   
+  .mouse{
+    text-align: center;
+    font-size: 175%;
+    color: #6D0680;
+  }
+
+
+  .sixBullets{
+    text-align: center;
+    font-size: 175%;
+    color: #71FF5A;
+  }
+
+
   .input-container{
 
 
@@ -51,4 +71,11 @@ body{
   .button-container{
     display: flex;
     justify-content: center;
+  }
+
+  .center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
   }
