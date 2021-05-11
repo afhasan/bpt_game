@@ -65,4 +65,6 @@ COVID.png
 <br>
 <i> Hosting the website watch this <a href="https://www.youtube.com/watch?v=A3cMw15wI2Y">video</a> <i/>
 
+**Resources for making the Android App**
+https://www.youtube.com/watch?v=p0ItPcqqXog
 
